@@ -1,0 +1,26 @@
+# def addPhone(request):
+#     form = PhoneForm()
+#     if request.method == "POST":
+#         if form.is_valid():
+#             form_phone = PhoneForm(request.POST)
+#             if form_phone.is_valid():
+#                 new_phone = form_phone.save()
+#                 new_phone.save()
+#         return redirect('/')
+#     return render(request, 'addPhone.html', {
+#         'PhoneForm': form
+#     })
+
+
+def addEmail(request):
+    form = EmailForm()
+    if request.method == "POST":
+        if form.is_valid():
+            form_email = EmailForm(request.POST)
+            if form_email.is_valid():
+                new_email = form_email.save()
+                new_email.save()
+        return redirect('/')
+    return render(request, 'addEmail.html', {
+        'EmailForm': form
+    })

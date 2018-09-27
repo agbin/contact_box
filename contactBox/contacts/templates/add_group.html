@@ -1,0 +1,11 @@
+<html lang="en">
+<head>
+    <title>add group</title>
+</head>
+<body>
+    <form class="" method="post" action="">
+        {% csrf_token %}
+        {{ GroupForm.as_p }}
+        <input type="submit" value="Zapisz">
+    </form>
+</body>

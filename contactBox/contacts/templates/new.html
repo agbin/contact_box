@@ -1,0 +1,12 @@
+<html lang="en">
+<head>
+    <title>add person</title>
+</head>
+<body>
+    <form method="post" action="/new/">
+        {% csrf_token %}
+        {{ PersonForm.as_p }}
+        <a href=/show/><input type="submit" value="Zapisz"></a>
+    </form>
+</body>
+

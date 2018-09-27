@@ -1,0 +1,11 @@
+<html lang="en">
+<head>
+    <title>add phone</title>
+</head>
+<body>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ PhoneForm.as_p }}
+        <a href=/show/><input type="submit" value="Zapisz"></a>
+    </form>
+</body>

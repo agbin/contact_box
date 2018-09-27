@@ -1,0 +1,130 @@
+# def edit_person(request, person_id):
+#     post = get_object_or_404()
+    # t = get_object_or_404(Person, pk=task_id) if task_id else None
+    # form_person = PersonForm(request.POST or None, instance=t)
+    # form_address = AddressForm(request.POST or None, instance=t)
+    # form_phone = PhoneForm(request.POST or None, instance=t)
+    # form_email = EmailForm(request.POST or None, instance=t)
+    #
+    # if form.is_valid():
+    #     form.save()
+    #     return redirect('/')
+
+
+def edit_person(request, id=None):
+    person = get_object_or_404(Person, id=id)
+    # address = get_object_or_404(Address, id=id)
+    # email = get_object_or_404(Email, id=id)
+    # address = get_object_or_404(Address, id=id)
+    # person = Person.objects.get(id=id)
+    # address = Address.objects.get(id=person.address_id)
+    # phones = Phone.objects.filter(person_id=id)
+    # emails = Email.objects.filter(person_id=id)
+    form_person = PersonForm(request.POST or None, instance=person)
+    form_address = AddressForm(request.POST or None, instance=person.address)
+    form_phone = AddressForm(request.POST or None, instance=person)
+    form_email = AddressForm(request.POST or None, instance=person)
+    # form_phones = []
+    # for phone in phones:
+    #     form_phones.append(PhoneForm(request.POST or None, instance=phone))
+    # for email in emails:
+    #     form_email = EmailForm(request.POST or None, instance=email)
+    # if form_person.is_valid():
+    #     instance = form_person.save(commit=False)
+    #     instance.save()
+    #
+    #
+    # if form_address.is_valid():
+    # instance = form_address.save(commit=False)
+    # instance.save()
+
+    if form_person.is_valid() and form_address.is_valid() and form_phone.is_valid() and form_email.is_valid():
+
+        # for form_phone in form_phones:
+        #     instance = form_phone.save(commit=False)
+        #     instance.save()
+        instance = form_person.save(commit=False)
+        instance.save()
+        instance = form_address.save(commit=False)
+        instance.save()
+        instance = form_phone.save(commit=False)
+        instance.save()
+        instance = form_email.save(commit=False)
+        instance.save()
+    return render(request, 'modify.html', {
+        'PersonForm': form_person,
+        'AddressForm': form_address,
+        'PhoneForm': form_phone,
+        'EmailForm': form_email
+
+    })
+
+
+
+
+
+# def edit_person(request, id):
+#     person = Person.objects.get(id=id)
+#     # form_person = PersonForm()
+#     # form_address = AddressForm()
+#     form_phone = PhoneForm()
+#     form_email = EmailForm()
+#     # address = AddressForm(id=id)
+#     phones = Phone.objects.filter(person_id=id) #bo potem jest for...........
+#     emails = Email.objects.filter(person_id=id)
+#     if request.method == 'POST':
+#         form_person = PersonForm(request.POST, instance=question)
+#         form_address = AddressForm(request.POST)
+#         form_phone = PhoneForm(request.POST)
+#         form_email = EmailForm(request.POST)
+#
+#         # question = Question.objects.get(pk=id)
+#         # if request.method == 'POST':
+#         #     form = QuestionForm(request.POST, instance=question)
+#         #     form.save()
+#
+#
+#         if form_person.is_valid() and form_address.is_valid() and form_phone.is_valid() and form_email.is_valid():
+#             form_person.save()
+#        #     form_person.save_m2m()
+#             form_address.save()
+#             form_phone.save()
+#             form_email.save()
+#             return render(request, 'modify.html', {
+#                 'PersonForm': form_person,
+#                 'AddressForm': form_address,
+#                 'PhoneForm': form_phone,
+#                 'EmailForm': form_email,
+#             })
+#     else:
+#         form_person = PersonForm(
+#                         initial={
+#                             'first_name': person.first_name,
+#                             'last_name': person.last_name,
+#                             'description': person.description
+#                         })
+#         form_address = AddressForm(
+#                         initial={
+#                             'city': person.address.city,
+#                             'street': person.address.street,
+#                             'house_nr': person.address.house_nr,
+#                             'flat_nr': person.address.flat_nr,
+#                         })
+#         for phone in phones:
+#             form_phone = PhoneForm(
+#                 initial={
+#                     'number': phone.number,
+#                     'type': phone.type
+#                 })
+#         for email in emails:
+#             form_email = EmailForm(
+#                 initial={
+#                     'mail': email.mail,
+#                     'type': email.type
+#                 })
+#     return render(request, 'modify.html', {
+#         'PersonForm': form_person,
+#         'AddressForm': form_address,
+#         'PhoneForm': form_phone,
+#         'EmailForm': form_email,
+#     })

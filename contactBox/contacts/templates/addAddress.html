@@ -1,0 +1,11 @@
+<html lang="en">
+<head>
+    <title>add address</title>
+</head>
+<body>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ AddressForm.as_p }}
+        <a href=/addAddress/><input type="submit" value="Zapisz"></a>
+    </form>
+</body>

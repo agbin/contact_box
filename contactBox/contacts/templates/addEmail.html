@@ -1,0 +1,11 @@
+<html lang="en">
+<head>
+    <title>add email</title>
+</head>
+<body>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ EmailForm.as_p }}
+        <a href=/show/><input type="submit" value="Zapisz"></a>
+    </form>
+</body>

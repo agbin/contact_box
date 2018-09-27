@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+
+    <title>edit person</title>
+    <style>
+        h3 {
+            color: #0000CD;
+            font-family: verdana;
+            font-size: 200%;
+        }
+        p  {
+            color: red;
+            font-family: courier;
+            font-size: 120%;
+        }
+        body {background-color: AliceBlue;}
+    </style>
+</head>
+<body marginwidth="40">
+    <form class="" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+
+        <label><h3>Edit person</h3></label><br>
+
+
+        {{ PersonForm.as_p }}
+
+        <h3>Address: </h3>
+        {{ AddressForm.as_p }}
+        {% for form in formset.forms %}
+            {{ form }}
+        {% endfor %}
+
+        <h3>Phone: </h3><br>
+        <!--{{ PhoneForms.management_form }}-->
+        {% for PhoneForm in PhoneForms %}
+            {{ PhoneForm }} <br>
+            <!--{{ PhoneForm.number }} {{ PhoneForm.type }}-->
+        {% endfor %}
+
+        <!--{% for PhoneForm in PhoneForms %}-->
+            <!--{{ PhoneForm.as_p }}-->
+            <!--{% for form in formset.forms %}-->
+                <!--{{ form }}-->
+            <!--{% endfor %}-->
+        <!--{% endfor %}-->
+
+        <!--{{ PhoneForm.as_p }}-->
+        <!--{% for form in formset.forms %}-->
+            <!--{{ form }}-->
+        <!--{% endfor %}-->
+        <br>
+
+        <h3>Email: </h3>
+        {{ EmailForm.as_p }}
+        {% for form in formset.forms %}
+            {{ form }}
+        {% endfor %}
+
+        <input type="submit" value="Zapisz"></a>
+    </form>
+
+</body>
+
+
+
