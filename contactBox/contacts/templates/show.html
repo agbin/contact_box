@@ -30,7 +30,12 @@
         </td>
     </tr>
      <tr>
-        <th>Group: </th><td>{{ person.group_name }}</td>
+        <th>Group: </th>
+        <td>
+        {% for group in person.group.all %}
+            {{ group.group_name }}
+        {% endfor %}
+        </td>
     </tr>
 </table>
 <br>
